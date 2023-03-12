@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9f7599a2-e0ac-4d31-83aa-6a5832d6e395}</ProjectGuid>
-    <RootNamespace>My22239thgradesprintmathgames</RootNamespace>
+    <ProjectGuid>{bfcf73df-4c2c-4593-a73d-3dc5f40ed757}</ProjectGuid>
+    <RootNamespace>BitMaze</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -130,7 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="2223-9th-grade-sprint-math-games.cpp" />
+    <ClCompile Include="BitMaze.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

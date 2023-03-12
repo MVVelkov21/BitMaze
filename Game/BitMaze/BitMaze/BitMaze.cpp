@@ -14,20 +14,20 @@ int main()
     DisableCursor();
 
     SetTargetFPS(60);
-    
+
     while (!WindowShouldClose())
     {
         BeginDrawing();
-            ClearBackground(WHITE);
-            DrawRectangle(325, 125, 150, 50, BLACK);
-            DrawText("PLAY", playW, playH, playS, WHITE);
-            if (IsKeyPressed(KEY_ENTER)) {
-                while (!WindowShouldClose()) {
-                    BeginDrawing();
-                    DrawText("PLAY", playW, playH, playS, RED);
-                    EndDrawing();
-                }
+        ClearBackground(WHITE);
+        DrawRectangle(325, 125, 150, 50, BLACK);
+        DrawText("PLAY", playW, playH, playS, WHITE);
+        if (IsKeyPressed(KEY_ENTER)) {
+            while (!WindowShouldClose()) {
+                BeginDrawing();
+                DrawText("PLAY", playW, playH, playS, RED);
+                EndDrawing();
             }
+        }
         EndDrawing();
     }
     CloseWindow();
