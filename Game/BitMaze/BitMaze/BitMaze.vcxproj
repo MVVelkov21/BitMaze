@@ -132,9 +132,15 @@
   <ItemGroup>
     <ClCompile Include="BitMaze.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="PlayGame.cpp" />
+    <ClCompile Include="Rules.cpp" />
+    <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="PlayGame.h" />
+    <ClInclude Include="Rules.h" />
+    <ClInclude Include="Settings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
