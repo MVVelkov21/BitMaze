@@ -3,9 +3,13 @@
 
 void GameMainMenu() {
 	while (!WindowShouldClose()){
+		if (IsKeyPressed(KEY_ESCAPE)) {
+			SetExitKey(KEY_ESCAPE);
+			MainMenuGUI();
+		}
 		BeginDrawing();
 		ClearBackground(WHITE);
-		DrawText("SUCCESS", 400, 225, 50, BLACK);
+		DrawText("LEVELS", 288, 30, 50, BLACK);
 		EndDrawing();
 	}
 }

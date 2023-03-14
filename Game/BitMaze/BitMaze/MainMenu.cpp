@@ -4,9 +4,6 @@
 #include "Settings.h"
 #include "MainMenu.h"
 
-const int screenWidth = 800;
-const int screenHeight = 450;
-
 void MainMenuButtons() {
     DrawRectangle(326, 125, 150, 50, BLACK);
     DrawText("PLAY", 335, 128, 50, WHITE);
@@ -15,41 +12,46 @@ void MainMenuButtons() {
     DrawRectangle(255, 245, 283, 50, BLACK);
     DrawText("SETTINGS", 260, 248, 50, WHITE);
     if (IsKeyPressed(KEY_ONE)) {
-       while (!IsKeyDown(KEY_ONE)) {
+       SetExitKey(KEY_ONE);
+       while (!WindowShouldClose()) {
+            BeginDrawing();
             DrawText("PLAY", 335, 128, 50, RED);
+            EndDrawing();
             if (IsKeyPressed(KEY_ENTER)) {
+                CloseWindow();
                 GameMainMenu();
             }
-        }
+       }
+       SetExitKey(KEY_ESCAPE);
     }
     if (IsKeyPressed(KEY_TWO)) {
-        /*while (!WindowShouldClose()) {
+        SetExitKey(KEY_TWO);
+        while (!WindowShouldClose()) {
             BeginDrawing();
             DrawText("RULES", 318, 188, 50, RED);
             EndDrawing();
-        }*/
+            if (IsKeyPressed(KEY_ENTER)) {
+                rules();
+            }
+        }
+        SetExitKey(KEY_ESCAPE);
     }
     if (IsKeyPressed(KEY_THREE)) {
-        /*while (!WindowShouldClose()) {
+        SetExitKey(KEY_THREE);
+        while (!WindowShouldClose()) {
             BeginDrawing();
             DrawText("SETTINGS", 260, 248, 50, RED);
             EndDrawing();
-        }*/
+        }
+        SetExitKey(KEY_ESCAPE);
     }
 }
 
 void MainMenuGUI() {
-    InitWindow(screenWidth, screenHeight, "BitMaze");
-
-    DisableCursor();
-
-    SetTargetFPS(60);
-
-    while (!WindowShouldClose())
-    {
+    while (!WindowShouldClose()){
         BeginDrawing();
         ClearBackground(WHITE);
-        DrawText("PRESS 'ENTER' TO PLAY, 'R' FOR RULES OR 'ESC' TO QUIT", 100, 90, 20, BLACK);
+        DrawText("PRESS '1' TO PLAY, '2' FOR RULES OR '3' FOR SETTINGS", 100, 90, 20, BLACK);
         MainMenuButtons();
         EndDrawing();
     }
