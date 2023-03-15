@@ -5,7 +5,7 @@ void rules() {
 	while (!WindowShouldClose()) {
 		if (IsKeyPressed(KEY_ESCAPE)) {
 			BeginDrawing();
-			DrawText("Return", 30, 30, 30, RED);
+			DrawText("Return", 20, 20, 20, RED);
 			EndDrawing();
 			for(int i = 0; i < 100000000; i++){}
 			SetExitKey(KEY_ESCAPE);
@@ -13,8 +13,9 @@ void rules() {
 		}
 		BeginDrawing();
 		ClearBackground(WHITE);
-		DrawRectangle(25, 25, 117, 35, BLACK);
-		DrawText("Return", 30, 30, 30, WHITE);
+		DrawRectangle(15, 15, 80, 25, BLACK);
+		DrawText("Return", 20, 20, 20, WHITE);
+		DrawText("RULES", 288, 30, 50, BLACK);
 		EndDrawing();
 	}
 }

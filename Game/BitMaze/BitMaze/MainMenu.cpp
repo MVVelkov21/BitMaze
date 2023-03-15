@@ -18,7 +18,6 @@ void MainMenuButtons() {
             DrawText("PLAY", 335, 128, 50, RED);
             EndDrawing();
             if (IsKeyPressed(KEY_ENTER)) {
-                CloseWindow();
                 GameMainMenu();
             }
        }
@@ -48,7 +47,9 @@ void MainMenuButtons() {
 }
 
 void MainMenuGUI() {
-    while (!WindowShouldClose()){
+
+    while (1 > 0){
+        if (IsKeyPressed(KEY_ESCAPE)) CloseWindow();
         BeginDrawing();
         ClearBackground(WHITE);
         DrawText("PRESS '1' TO PLAY, '2' FOR RULES OR '3' FOR SETTINGS", 100, 90, 20, BLACK);
