@@ -1,1 +1,3 @@
 void GameMainMenu();
+
+void levelButtons();
