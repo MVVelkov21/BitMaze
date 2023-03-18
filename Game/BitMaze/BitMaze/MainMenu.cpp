@@ -1,3 +1,4 @@
+#include <iostream>
 #include "raylib.h"
 #include "PlayGame.h"
 #include "Rules.h"
@@ -41,6 +42,9 @@ void MainMenuButtons() {
             BeginDrawing();
             DrawText("SETTINGS", 260, 248, 50, RED);
             EndDrawing();
+            if (IsKeyPressed(KEY_ENTER)) {
+                settings();
+            }
         }
         SetExitKey(KEY_ESCAPE);
     }
@@ -49,9 +53,12 @@ void MainMenuButtons() {
 void MainMenuGUI() {
 
     while (1 > 0){
-        if (IsKeyPressed(KEY_ESCAPE)) CloseWindow();
+        if (IsKeyPressed(KEY_ESCAPE)) {
+            exit(0);
+        }
         BeginDrawing();
         ClearBackground(WHITE);
+        DrawText("BitMaze", 300, 20, 50, BLACK);
         DrawText("PRESS '1' TO PLAY, '2' FOR RULES OR '3' FOR SETTINGS", 100, 90, 20, BLACK);
         MainMenuButtons();
         EndDrawing();

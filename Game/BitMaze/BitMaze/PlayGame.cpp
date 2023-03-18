@@ -9,7 +9,6 @@ void levelButtons() {
 			DrawText("LEVEL 1", 110, 205, 30, RED);
 			EndDrawing();
 		}
-		SetExitKey(KEY_ESCAPE);
 	}
 	if (IsKeyPressed(KEY_FOUR)) {
 		SetExitKey(KEY_FOUR);
@@ -18,7 +17,6 @@ void levelButtons() {
 			DrawText("LEVEL 4", 110, 380, 30, RED);
 			EndDrawing();
 		}
-		SetExitKey(KEY_ESCAPE);
 	}
 	if (IsKeyPressed(KEY_TWO)) {
 		SetExitKey(KEY_TWO);
@@ -27,7 +25,6 @@ void levelButtons() {
 			DrawText("LEVEL 2", 335, 205, 30, RED);
 			EndDrawing();
 		}
-		SetExitKey(KEY_ESCAPE);
 	}
 	if (IsKeyPressed(KEY_FIVE)) {
 		SetExitKey(KEY_FIVE);
@@ -36,7 +33,6 @@ void levelButtons() {
 			DrawText("LEVEL 5", 335, 380, 30, RED);
 			EndDrawing();
 		}
-		SetExitKey(KEY_ESCAPE);
 	}
 	if (IsKeyPressed(KEY_THREE)) {
 		SetExitKey(KEY_THREE);
@@ -45,7 +41,6 @@ void levelButtons() {
 			DrawText("LEVEL 3", 560, 205, 30, RED);
 			EndDrawing();
 		}
-		SetExitKey(KEY_ESCAPE);
 	}
 	if (IsKeyPressed(KEY_SIX)) {
 		SetExitKey(KEY_SIX);
@@ -54,20 +49,20 @@ void levelButtons() {
 			DrawText("RANDOM", 560, 380, 30, RED);
 			EndDrawing();
 		}
+	}
+	if (IsKeyPressed(KEY_ESCAPE)) {
+		BeginDrawing();
+		DrawText("Return", 20, 20, 20, RED);
+		EndDrawing();
+		for (int i = 0; i < 100000000; i++) {}
 		SetExitKey(KEY_ESCAPE);
+		MainMenuGUI();
 	}
 }
 
 void GameMainMenu() {
+	SetExitKey(1);
 	while (!WindowShouldClose()){
-		if (IsKeyPressed(KEY_ESCAPE)) {
-			BeginDrawing();
-			DrawText("Return", 20, 20, 20, RED);
-			EndDrawing();
-			for (int i = 0; i < 100000000; i++) {}
-			SetExitKey(KEY_ESCAPE);
-			MainMenuGUI();
-		}
 		BeginDrawing();
 		ClearBackground(WHITE);
 		DrawRectangle(15, 15, 80, 25, BLACK);

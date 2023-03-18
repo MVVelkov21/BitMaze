@@ -15,7 +15,7 @@ void rules() {
 		ClearBackground(WHITE);
 		DrawRectangle(15, 15, 80, 25, BLACK);
 		DrawText("Return", 20, 20, 20, WHITE);
-		DrawText("RULES", 288, 30, 50, BLACK);
+		DrawText("RULES", 330, 30, 50, BLACK);
 		EndDrawing();
 	}
 }
