@@ -131,12 +131,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BitMaze.cpp" />
+    <ClCompile Include="levels.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="PlayGame.cpp" />
     <ClCompile Include="Rules.cpp" />
     <ClCompile Include="Settings.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="levels.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="PlayGame.h" />
     <ClInclude Include="Rules.h" />
