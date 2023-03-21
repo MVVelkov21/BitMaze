@@ -1,11 +1,19 @@
 #include "raylib.h"
 #include "PlayGame.h"
 
+const int screenWidth = 800, screenHeight = 450;
+
 void back() {
 	if (IsKeyPressed(KEY_ESCAPE)) GameMainMenu();
 }
 
 void level1() {
+	Camera2D camera = { 0 };
+	camera.target = { 0 };
+	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
+	camera.rotation = 0.0f;
+	camera.zoom = 3.0f;
+
 	const int numBoxes = 30;
 	Rectangle boxes[numBoxes];
 	//Color boxColor = BLANK; 
@@ -187,13 +195,17 @@ void level1() {
 			rect.y -= movement.y;
 		}
 
+		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+
 		BeginDrawing();
+		BeginMode2D(camera);
 		ClearBackground(WHITE);
 		DrawTexture(map1, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++){
 			DrawRectangleRec(boxes[i], boxColor);
 		}
 		DrawRectangleRec(rect, rectColor);
+		EndMode2D();
 		EndDrawing();
 		back();
 	}
