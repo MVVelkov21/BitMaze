@@ -174,7 +174,7 @@ void level1() {
 	const float moveSpeed = 200.0f;
 	Vector2 movement = { 0, 0 };
 
-	Texture2D map1 = LoadTexture("C:/Users/admin/source/repos/2223-9th-grade-sprint-math-games-bitmaze/Game/BitMaze/raylib/resources/level1.png");
+	Texture2D map1 = LoadTexture("resources/level1.png");
 	while (!WindowShouldClose()) {
 		movement.x = ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) - (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))) * moveSpeed * GetFrameTime();
 		movement.y = ((IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S)) - (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W))) * moveSpeed * GetFrameTime();
@@ -195,7 +195,7 @@ void level1() {
 			rect.y -= movement.y;
 		}
 
-		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		BeginDrawing();
 		BeginMode2D(camera);
@@ -213,7 +213,7 @@ void level1() {
 }
 
 void level2() {
-	Texture2D map2 = LoadTexture("C:/Users/admin/source/repos/2223-9th-grade-sprint-math-games-bitmaze/Game/BitMaze/raylib/resources/level2.png");
+	Texture2D map2 = LoadTexture("resources/level2.png");
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 		ClearBackground(WHITE);
@@ -225,7 +225,7 @@ void level2() {
 }
 
 void level3() {
-	Texture2D map3 = LoadTexture("C:/Users/admin/source/repos/2223-9th-grade-sprint-math-games-bitmaze/Game/BitMaze/raylib/resources/level3.png");
+	Texture2D map3 = LoadTexture("resources/level3.png");
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 		ClearBackground(WHITE);
@@ -237,7 +237,7 @@ void level3() {
 }
 
 void level4() {
-	Texture2D map4 = LoadTexture("C:/Users/admin/source/repos/2223-9th-grade-sprint-math-games-bitmaze/Game/BitMaze/raylib/resources/level4.png");
+	Texture2D map4 = LoadTexture("resources/level4.png");
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 		ClearBackground(WHITE);
@@ -249,7 +249,7 @@ void level4() {
 }
 
 void level5() {
-	Texture2D map5 = LoadTexture("C:/Users/admin/source/repos/2223-9th-grade-sprint-math-games-bitmaze/Game/BitMaze/raylib/resources/level5.png");
+	Texture2D map5 = LoadTexture("resources/level5.png");
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 		ClearBackground(WHITE);
