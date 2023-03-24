@@ -807,6 +807,116 @@ void level4() {
 	boxes[5].width = 100;
 	boxes[5].height = 20;
 
+	boxes[6].x = 220;
+	boxes[6].y = 90;
+	boxes[6].width = 84;
+	boxes[6].height = 20;
+
+	boxes[7].x = 460;
+	boxes[7].y = 45;
+	boxes[7].width = 150;
+	boxes[7].height = 20;
+
+	boxes[8].x = 390;
+	boxes[8].y = 70;
+	boxes[8].width = 35;
+	boxes[8].height = 20;
+
+	boxes[9].x = 460;
+	boxes[9].y = 94;
+	boxes[9].width = 100;
+	boxes[9].height = 20;
+
+	boxes[10].x = 410;
+	boxes[10].y = 135;
+	boxes[10].width = 165;
+	boxes[10].height = 20;
+
+	boxes[11].x = 225;
+	boxes[11].y = 176;
+	boxes[11].width = 304;
+	boxes[11].height = 20;
+
+	boxes[12].x = 225;
+	boxes[12].y = 370;
+	boxes[12].width = 304;
+	boxes[12].height = 20;
+
+	boxes[13].x = 275;
+	boxes[13].y = 330;
+	boxes[13].width = 210;
+	boxes[13].height = 20;
+
+	boxes[14].x = 275;
+	boxes[14].y = 230;
+	boxes[14].width = 50;
+	boxes[14].height = 20;
+
+	boxes[15].x = 520;
+	boxes[15].y = 230;
+	boxes[15].width = 55;
+	boxes[15].height = 20;
+
+	boxes[16].x = 520;
+	boxes[16].y = 275;
+	boxes[16].width = 55;
+	boxes[16].height = 20;
+
+	boxes[17].x = 515;
+	boxes[17].y = 230;
+	boxes[17].width = 20;
+	boxes[17].height = 160;
+
+	boxes[18].x = 465;
+	boxes[18].y = 180;
+	boxes[18].width = 20;
+	boxes[18].height = 160;
+
+	boxes[19].x = 555;
+	boxes[19].y = 140;
+	boxes[19].width = 20;
+	boxes[19].height = 100;
+
+	boxes[20].x = 555;
+	boxes[20].y = 285;
+	boxes[20].width = 20;
+	boxes[20].height = 120;
+
+	boxes[21].x = 265;
+	boxes[21].y = 230;
+	boxes[21].width = 20;
+	boxes[21].height = 120;
+
+	boxes[22].x = 220;
+	boxes[22].y = 150;
+	boxes[22].width = 20;
+	boxes[22].height = 140;
+
+	boxes[23].x = 225;
+	boxes[23].y = 342;
+	boxes[23].width = 20;
+	boxes[23].height = 40;
+
+	boxes[24].x = 285;
+	boxes[24].y = 60;
+	boxes[24].width = 20;
+	boxes[24].height = 40;
+
+	boxes[25].x = 345;
+	boxes[25].y = 20;
+	boxes[25].width = 20;
+	boxes[25].height = 135;
+
+	boxes[26].x = 410;
+	boxes[26].y = 20;
+	boxes[26].width = 20;
+	boxes[26].height = 135;
+
+	boxes[27].x = 460;
+	boxes[27].y = 60;
+	boxes[27].width = 20;
+	boxes[27].height = 50;
+
 	Rectangle rect = { 195, 25, 10, 10 };
 	Color rectColor = RED;
 
