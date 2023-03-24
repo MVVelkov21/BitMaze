@@ -17,8 +17,8 @@ void level1() {
 
 	const int numBoxes = 30;
 	Rectangle boxes[numBoxes];
-	//Color boxColor = BLANK; 
-	Color boxColor = RED;
+	Color boxColor = BLANK; 
+	//Color boxColor = RED;
 		boxes[0].x = 180;
 		boxes[0].y = 0;
 		boxes[0].width = 7;
@@ -214,16 +214,16 @@ void level1() {
 }
 
 void level2() {
-	/*Camera2D camera = { 0 };
+	Camera2D camera = { 0 };
 	camera.target = { 0 };
 	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
 	camera.rotation = 0.0f;
-	camera.zoom = 3.0f;*/
+	camera.zoom = 3.0f;
 
 	const int numBoxes = 50;
 	Rectangle boxes[numBoxes];
-	//Color boxColor = BLANK; 
-	Color boxColor = RED;
+	Color boxColor = BLANK; 
+	//Color boxColor = RED;
 	boxes[0].x = 190;
 	boxes[0].y = 0;
 	boxes[0].width = 7;
@@ -503,17 +503,17 @@ void level2() {
 			rect.y -= movement.y;
 		}
 
-		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		BeginDrawing();
-		//BeginMode2D(camera);
+		BeginMode2D(camera);
 		ClearBackground(WHITE);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
 		DrawRectangleRec(rect, rectColor);
-		//EndMode2D();
+		EndMode2D();
 		EndDrawing();
 		back();
 	}
@@ -777,11 +777,40 @@ void level4() {
 	//Color boxColor = BLANK; 
 	Color boxColor = RED;
 	
+	boxes[0].x = 175;
+	boxes[0].y = 0;
+	boxes[0].width = 17;
+	boxes[0].height = 500;
 
-	Rectangle rect = { 195, 15, 20, 20 };
+	boxes[1].x = 610;
+	boxes[1].y = 0;
+	boxes[1].width = 7;
+	boxes[1].height = 500;
+
+	boxes[2].x = 175;
+	boxes[2].y = 13;
+	boxes[2].width = 500;
+	boxes[2].height = 7;
+
+	boxes[3].x = 175;
+	boxes[3].y = 430;
+	boxes[3].width = 500;
+	boxes[3].height = 7;
+
+	boxes[4].x = 175;
+	boxes[4].y = 45;
+	boxes[4].width = 130;
+	boxes[4].height = 20;
+
+	boxes[5].x = 175;
+	boxes[5].y = 130;
+	boxes[5].width = 100;
+	boxes[5].height = 20;
+
+	Rectangle rect = { 195, 25, 10, 10 };
 	Color rectColor = RED;
 
-	const float moveSpeed = 200.0f;
+	const float moveSpeed = 150.0f;
 	Vector2 movement = { 0, 0 };
 
 	Texture2D map = LoadTexture("resources/level4.png");
