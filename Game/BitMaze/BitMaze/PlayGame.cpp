@@ -1,6 +1,21 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
 #include "raylib.h"
 #include "MainMenu.h"
 #include "levels.h"
+using namespace std;
+
+int randomNumber;
+
+int randomNumberGenerator() {
+	srand(time(0));
+	do {
+		randomNumber = (rand() % 10) + 1;
+	} while (randomNumber > 5);
+	return randomNumber;
+}
+
 
 void levelButtons() {
 	if (IsKeyPressed(KEY_ONE)) {
@@ -64,6 +79,17 @@ void levelButtons() {
 			BeginDrawing();
 			DrawText("RANDOM", 560, 380, 30, RED);
 			EndDrawing();
+			if (IsKeyPressed(KEY_ENTER)) {
+				randomNumberGenerator();
+				switch (randomNumber)
+				{
+				case 1: level1(); break;
+				case 2: level2(); break;
+				case 3: level3(); break;
+				case 4: level4(); break;
+				case 5: level5(); break;
+				}
+			}
 		}
 	}
 	if (IsKeyPressed(KEY_ESCAPE)) {
