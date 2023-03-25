@@ -92,18 +92,17 @@ void levelButtons() {
 			}
 		}
 	}
-	if (IsKeyPressed(KEY_ESCAPE)) {
+	if(IsKeyPressed(KEY_ESCAPE)) {
 		BeginDrawing();
 		DrawText("Return", 20, 20, 20, RED);
 		EndDrawing();
 		for (int i = 0; i < 100000000; i++) {}
-		SetExitKey(KEY_ESCAPE);
 		MainMenuGUI();
 	}
 }
 
 void GameMainMenu() {
-	SetExitKey(1);
+	SetExitKey(KEY_NULL);
 	while (!WindowShouldClose()){
 		BeginDrawing();
 		ClearBackground(WHITE);
