@@ -1,3 +1,4 @@
+void levelCompletion();
 
 void level1();
 

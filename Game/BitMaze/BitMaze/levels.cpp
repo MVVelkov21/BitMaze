@@ -1,7 +1,55 @@
 #include "raylib.h"
 #include "PlayGame.h"
+#include "levels.h"
+#include <iostream>
+using namespace std;
 
 const int screenWidth = 800, screenHeight = 450;
+
+void levelCompletion(int levelNumber) {
+	SetExitKey(KEY_NULL);
+	while (!WindowShouldClose()) {
+		BeginDrawing();
+		ClearBackground(BLACK);
+		if(levelNumber == 1) DrawText("LEVEL 1 COMPLETED!", 150, 20, 50, WHITE);
+		if(levelNumber == 2) DrawText("LEVEL 2 COMPLETED!", 150, 20, 50, WHITE);
+		if(levelNumber == 3) DrawText("LEVEL 3 COMPLETED!", 150, 20, 50, WHITE);
+		if(levelNumber == 4) DrawText("LEVEL 4 COMPLETED!", 150, 20, 50, WHITE);
+		if(levelNumber == 5) DrawText("LEVEL 5 COMPLETED!", 150, 20, 50, WHITE);
+		DrawRectangle(326, 125, 150, 50, BLACK);
+		if(levelNumber < 5) DrawText("NEXT LEVEL", 335, 128, 50, WHITE);
+		DrawRectangle(308, 185, 185, 50, BLACK);
+		DrawText("MAIN MENU", 318, 188, 50, WHITE);
+		if (IsKeyPressed(KEY_ONE) && levelNumber < 5) {
+			SetExitKey(KEY_ONE);
+			while (!WindowShouldClose()) {
+				BeginDrawing();
+			    DrawText("NEXT LEVEL", 335, 128, 50, RED);
+				EndDrawing();
+					if (IsKeyPressed(KEY_ENTER)) {
+						switch (levelNumber) {
+						case 1: level2(); break;
+						case 2: level3(); break;
+						case 3: level4(); break;
+						case 4: level5(); break;
+						}
+					}
+			}
+		}
+		if (IsKeyPressed(KEY_TWO)) {
+			SetExitKey(KEY_TWO);
+			while (!WindowShouldClose()) {
+				BeginDrawing();
+				DrawText("MAIN MENU", 318, 188, 50, RED);
+				EndDrawing();
+				if (IsKeyPressed(KEY_ENTER)) {
+					GameMainMenu();
+				}
+			}
+		}
+		EndDrawing();
+	}
+}
 
 void back() {
 	if (IsKeyPressed(KEY_ESCAPE)) GameMainMenu();
@@ -169,6 +217,7 @@ void level1() {
 	boxes[29].height = 55;
 
 	Rectangle rect = { 195, 15, 15, 15 };
+	Rectangle nextLevel = { 570, 370, 50, 70 };
 
 	const float moveSpeed = 200.0f;
 	Vector2 movement = { 0, 0 };
@@ -197,6 +246,9 @@ void level1() {
 			rect.x -= movement.x;
 			rect.y -= movement.y;
 		}
+		if (CheckCollisionRecs(rect, nextLevel)) {
+			levelCompletion(1);
+		}
 
 		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
@@ -224,7 +276,7 @@ void level1() {
 		for (int i = 0; i < numBoxes; i++){
 			DrawRectangleRec(boxes[i], boxColor);
 		}
-
+		DrawRectangleRec(nextLevel, RED);
 		DrawTexture(texture, rect.x, rect.y, WHITE);
 		EndMode2D();
 		EndDrawing();
@@ -498,6 +550,7 @@ void level2() {
 	boxes[49].height = 20;
 	
 	Rectangle rect = { 198, 21, 10, 10 };
+	Rectangle nextLevel = { 400, 365, 50, 70 };
 	Color rectColor = RED;
 
 	const float moveSpeed = 150.0f;
@@ -523,18 +576,22 @@ void level2() {
 			rect.x -= movement.x;
 			rect.y -= movement.y;
 		}
+		if (CheckCollisionRecs(rect, nextLevel)) {
+			levelCompletion(2);
+		}
 
-		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		BeginDrawing();
-		BeginMode2D(camera);
+		//BeginMode2D(camera);
 		ClearBackground(DARKGRAY);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
+		DrawRectangleRec(nextLevel, RED);
 		DrawRectangleRec(rect, rectColor);
-		EndMode2D();
+		//EndMode2D();
 		EndDrawing();
 		back();
 	}
@@ -743,6 +800,7 @@ void level3() {
 	boxes[37].height = 100;
 
 	Rectangle rect = { 190, 15, 10, 10 };
+	Rectangle nextLevel = { 580, 10, 40, 30 };
 	Color rectColor = RED;
 
 	const float moveSpeed = 200.0f;
@@ -768,18 +826,22 @@ void level3() {
 			rect.x -= movement.x;
 			rect.y -= movement.y;
 		}
+		if (CheckCollisionRecs(rect, nextLevel)) {
+			levelCompletion(3);
+		}
 
-		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		BeginDrawing();
-		BeginMode2D(camera);
+		//BeginMode2D(camera);
 		ClearBackground(DARKGRAY);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
+		DrawRectangleRec(nextLevel, RED);
 		DrawRectangleRec(rect, rectColor);
-		EndMode2D();
+		//EndMode2D();
 		EndDrawing();
 		back();
 	}
@@ -939,6 +1001,7 @@ void level4() {
 	boxes[27].height = 50;
 
 	Rectangle rect = { 195, 25, 10, 10 };
+	Rectangle nextLevel = { 570, 15, 50, 30 };
 	Color rectColor = RED;
 
 	const float moveSpeed = 150.0f;
@@ -964,18 +1027,22 @@ void level4() {
 			rect.x -= movement.x;
 			rect.y -= movement.y;
 		}
+		if (CheckCollisionRecs(rect, nextLevel)) {
+			levelCompletion(4);
+		}
 
-		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		BeginDrawing();
-		BeginMode2D(camera);
+		//BeginMode2D(camera);
 		ClearBackground(DARKGRAY);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
+		DrawRectangleRec(nextLevel, RED);
 		DrawRectangleRec(rect, rectColor);
-		EndMode2D();
+		//EndMode2D();
 		EndDrawing();
 		back();
 	}
@@ -983,16 +1050,16 @@ void level4() {
 }
 
 void level5() {
-	/*Camera2D camera = { 0 };
+	Camera2D camera = { 0 };
 	camera.target = { 0 };
 	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
 	camera.rotation = 0.0f;
-	camera.zoom = 3.0f;*/
+	camera.zoom = 3.0f;
 
 	const int numBoxes = 40;
 	Rectangle boxes[numBoxes];
-	//Color boxColor = BLANK; 
-	Color boxColor = RED;
+	Color boxColor = BLANK; 
+	//Color boxColor = RED;
 	
 	boxes[0].x = 175;
 	boxes[0].y = 0;
@@ -1155,6 +1222,7 @@ void level5() {
 	boxes[31].height = 30;
 
 	Rectangle rect = { 195, 15, 15, 15 };
+	Rectangle nextLevel = { 180, 335, 50, 70 };
 	Color rectColor = RED;
 
 	const float moveSpeed = 150.0f;
@@ -1180,6 +1248,9 @@ void level5() {
 			rect.x -= movement.x;
 			rect.y -= movement.y;
 		}
+		if (CheckCollisionRecs(rect, nextLevel)) {
+			levelCompletion(5);
+		}
 
 		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
@@ -1190,6 +1261,7 @@ void level5() {
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
+		DrawRectangleRec(nextLevel, RED);
 		DrawRectangleRec(rect, rectColor);
 		//EndMode2D();
 		EndDrawing();
