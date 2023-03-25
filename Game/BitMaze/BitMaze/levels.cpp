@@ -169,11 +169,14 @@ void level1() {
 	boxes[29].height = 55;
 
 	Rectangle rect = { 195, 15, 15, 15 };
-	Color rectColor = RED;
 
 	const float moveSpeed = 200.0f;
 	Vector2 movement = { 0, 0 };
 
+	Texture2D textureUp = LoadTexture("resources/joel_b1.png");
+	Texture2D textureDown = LoadTexture("resources/joel_fr1.png");
+	Texture2D textureLeft = LoadTexture("resources/joel_l1.png");
+	Texture2D textureRight = LoadTexture("resources/joel_r1.png");
 	Texture2D map = LoadTexture("resources/level1.png");
 	while (!WindowShouldClose()) {
 		movement.x = ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) - (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))) * moveSpeed * GetFrameTime();
@@ -197,6 +200,23 @@ void level1() {
 
 		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
+		Texture2D texture;
+		if (movement.x > 0) {
+			texture = textureRight;
+		}
+		else if (movement.x < 0) {
+			texture = textureLeft;
+		}
+		else if (movement.y > 0) {
+			texture = textureDown;
+		}
+		else if (movement.y < 0) {
+			texture = textureUp;
+		}
+		else {
+			texture = textureUp;
+		}
+
 		BeginDrawing();
 		BeginMode2D(camera);
 		ClearBackground(DARKGRAY);
@@ -204,7 +224,8 @@ void level1() {
 		for (int i = 0; i < numBoxes; i++){
 			DrawRectangleRec(boxes[i], boxColor);
 		}
-		DrawRectangleRec(rect, rectColor);
+
+		DrawTexture(texture, rect.x, rect.y, WHITE);
 		EndMode2D();
 		EndDrawing();
 		back();
