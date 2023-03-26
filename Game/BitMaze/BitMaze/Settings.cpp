@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "MainMenu.h"
 
+
 void settings() {
 	while (!WindowShouldClose()) {
 		if (IsKeyPressed(KEY_ESCAPE)) {
@@ -16,6 +17,7 @@ void settings() {
 		DrawRectangle(15, 15, 80, 25, BLACK);
 		DrawText("Return", 20, 20, 20, WHITE);
 		DrawText("SETTINGS", 288, 30, 50, BLACK);
+		DrawText("No settings for now :(", 250, 100, 30, BLACK);
 		EndDrawing();
 	}
 }

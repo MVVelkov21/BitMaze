@@ -79,6 +79,7 @@ void doorMedium() {
 		doorMedium();
 	}
 }
+
 void doorHard() {
 	srand(time(NULL));
 	int number1 = rand() % 8;
@@ -126,14 +127,14 @@ void levelCompletion(int levelNumber) {
 		if(levelNumber == 4) DrawText("LEVEL 4 COMPLETED!", 150, 20, 50, WHITE);
 		if(levelNumber == 5) DrawText("LEVEL 5 COMPLETED!", 150, 20, 50, WHITE);
 		DrawRectangle(326, 125, 150, 50, BLACK);
-		if(levelNumber < 5) DrawText("NEXT LEVEL", 335, 128, 50, WHITE);
+		if(levelNumber < 5) DrawText("NEXT LEVEL", 250, 128, 50, WHITE);
 		DrawRectangle(308, 185, 185, 50, BLACK);
-		DrawText("MAIN MENU", 318, 188, 50, WHITE);
+		DrawText("MAIN MENU", 250, 188, 50, WHITE);
 		if (IsKeyPressed(KEY_ONE) && levelNumber < 5) {
 			SetExitKey(KEY_ONE);
 			while (!WindowShouldClose()) {
 				BeginDrawing();
-			    DrawText("NEXT LEVEL", 335, 128, 50, RED);
+			    DrawText("NEXT LEVEL", 250, 128, 50, RED);
 				EndDrawing();
 					if (IsKeyPressed(KEY_ENTER)) {
 						switch (levelNumber) {
@@ -149,7 +150,7 @@ void levelCompletion(int levelNumber) {
 			SetExitKey(KEY_TWO);
 			while (!WindowShouldClose()) {
 				BeginDrawing();
-				DrawText("MAIN MENU", 318, 188, 50, RED);
+				DrawText("MAIN MENU", 250, 188, 50, RED);
 				EndDrawing();
 				if (IsKeyPressed(KEY_ENTER)) {
 					GameMainMenu();
