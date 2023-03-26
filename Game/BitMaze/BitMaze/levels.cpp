@@ -2,192 +2,116 @@
 #include "PlayGame.h"
 #include "levels.h"
 #include <iostream>
+#include <ctime>
+#include <string>
 using namespace std;
 
 const int screenWidth = 800, screenHeight = 450;
 
 void doorEasy() {
-	char number[5] = { '0' }; // variable to hold number value as a string
-	char text[5] = { '0' }; // variable to hold text input
-	int cursorPos = 0; // cursor position in text input
+	srand(time(NULL));
+	int number1 = rand() % 4;
+	int number2 = rand() % 4;
+	int result = 0;
+	int op = rand() % 3;
+	int user;
 
-	Rectangle textBox = { screenWidth / 2 - 100, screenHeight / 2 - 25, 200, 50 };
-	bool textBoxSelected = 1;
-
-	SetTargetFPS(60);
-
-	while (!WindowShouldClose())
-	{
-		// Update
-		if (textBoxSelected)
-		{
-			int key = GetKeyPressed();
-
-			if (key == '0' || key == '1')
-			{
-				if (cursorPos < 4) // only add if there is space in number
-				{
-					number[cursorPos++] = key; // add new digit to number
-				}
-			}
-
-			if (IsKeyPressed(KEY_BACKSPACE) && cursorPos > 0)
-			{
-				number[--cursorPos] = '0'; // remove last digit from number
-			}
-
-			// update text input with number value
-			sprintf_s(text, "%s", number);
-		}
-
-		// Draw
-		BeginDrawing();
-
-		ClearBackground(RAYWHITE);
-
-		DrawRectangleRec(textBox, LIGHTGRAY);
-		DrawText(text, textBox.x + 5, textBox.y + 10, 40, MAROON);
-
-		// Draw cursor rectangle
-		if (textBoxSelected)
-		{
-			DrawRectangle(textBox.x + 5 + cursorPos * 20, textBox.y + 13, 2, 30, MAROON);
-		}
-
-		EndDrawing();
-
-		// Move cursor with arrow keys
-		if (textBoxSelected)
-		{
-			if (IsKeyPressed(KEY_LEFT) && cursorPos > 0) cursorPos--;
-			if (IsKeyPressed(KEY_RIGHT) && cursorPos < 4) cursorPos++;
-		}
-		if (number[3] == '1') {
-			SetExitKey(KEY_ENTER);
-		}
+	cout << "Number 1: " << number1 << endl;
+	cout << "Number 2: " << number2 << endl;
+	cout << "Operation: ";
+	switch (op) {
+	case 0:
+		cout << "AND";
+		result = number1 & number2;
+		break;
+	case 1:
+		cout << "OR";
+		result = number1 | number2;
+		break;
+	case 2:
+		cout << "XOR";
+		result = number1 ^ number2;
+		break;
+	}
+	cout << endl;
+	cin >> user;
+	if (user == result) {
+		SetExitKey(KEY_ENTER);
+		cout << "YOU SOLVED THE OPERATION!" << endl;
+	}
+	else {
+		doorEasy();
 	}
 }
 
 void doorMedium() {
-	char number[7] = { '0' }; // variable to hold number value as a string
-	char text[7] = { '0' }; // variable to hold text input
-	int cursorPos = 0; // cursor position in text input
+	srand(time(NULL));
+	int number1 = rand() % 6;
+	int number2 = rand() % 6;
+	int result = 0;
+	int op = rand() % 3;
+	int user;
 
-	Rectangle textBox = { screenWidth / 2 - 100, screenHeight / 2 - 25, 200, 50 };
-	bool textBoxSelected = 1;
-
-	SetTargetFPS(60);
-
-	while (!WindowShouldClose())
-	{
-		// Update
-		if (textBoxSelected)
-		{
-			int key = GetKeyPressed();
-
-			if (key == '0' || key == '1')
-			{
-				if (cursorPos < 6) // only add if there is space in number
-				{
-					number[cursorPos++] = key; // add new digit to number
-				}
-			}
-
-			if (IsKeyPressed(KEY_BACKSPACE) && cursorPos > 0)
-			{
-				number[--cursorPos] = '0'; // remove last digit from number
-			}
-
-			// update text input with number value
-			sprintf_s(text, "%s", number);
-		}
-
-		// Draw
-		BeginDrawing();
-
-		ClearBackground(RAYWHITE);
-
-		DrawRectangleRec(textBox, LIGHTGRAY);
-		DrawText(text, textBox.x + 5, textBox.y + 10, 40, MAROON);
-
-		// Draw cursor rectangle
-		if (textBoxSelected)
-		{
-			DrawRectangle(textBox.x + 5 + cursorPos * 20, textBox.y + 13, 2, 30, MAROON);
-		}
-
-		EndDrawing();
-
-		// Move cursor with arrow keys
-		if (textBoxSelected)
-		{
-			if (IsKeyPressed(KEY_LEFT) && cursorPos > 0) cursorPos--;
-			if (IsKeyPressed(KEY_RIGHT) && cursorPos < 4) cursorPos++;
-		}
-		if (number[3] == '1') {
-			SetExitKey(KEY_ENTER);
-		}
+	cout << "Number 1: " << number1 << endl;
+	cout << "Number 2: " << number2 << endl;
+	cout << "Operation: ";
+	switch (op) {
+	case 0:
+		cout << "AND";
+		result = number1 & number2;
+		break;
+	case 1:
+		cout << "OR";
+		result = number1 | number2;
+		break;
+	case 2:
+		cout << "XOR";
+		result = number1 ^ number2;
+		break;
+	}
+	cout << endl;
+	cin >> user;
+	if (user == result) {
+		SetExitKey(KEY_ENTER);
+		cout << "YOU SOLVED THE OPERATION!" << endl;
+	}
+	else {
+		doorMedium();
 	}
 }
 void doorHard() {
-	char number[9] = { '0' }; // variable to hold number value as a string
-	char text[9] = { '0' }; // variable to hold text input
-	int cursorPos = 0; // cursor position in text input
+	srand(time(NULL));
+	int number1 = rand() % 8;
+	int number2 = rand() % 8;
+	int result = 0;
+	int op = rand() % 3;
+	int user;
 
-	Rectangle textBox = { screenWidth / 2 - 100, screenHeight / 2 - 25, 200, 50 };
-	bool textBoxSelected = 1;
-
-	SetTargetFPS(60);
-
-	while (!WindowShouldClose())
-	{
-		// Update
-		if (textBoxSelected)
-		{
-			int key = GetKeyPressed();
-
-			if (key == '0' || key == '1')
-			{
-				if (cursorPos < 8) // only add if there is space in number
-				{
-					number[cursorPos++] = key; // add new digit to number
-				}
-			}
-
-			if (IsKeyPressed(KEY_BACKSPACE) && cursorPos > 0)
-			{
-				number[--cursorPos] = '0'; // remove last digit from number
-			}
-
-			// update text input with number value
-			sprintf_s(text, "%s", number);
-		}
-
-		// Draw
-		BeginDrawing();
-
-		ClearBackground(RAYWHITE);
-
-		DrawRectangleRec(textBox, LIGHTGRAY);
-		DrawText(text, textBox.x + 5, textBox.y + 10, 40, MAROON);
-
-		// Draw cursor rectangle
-		if (textBoxSelected)
-		{
-			DrawRectangle(textBox.x + 5 + cursorPos * 20, textBox.y + 13, 2, 30, MAROON);
-		}
-
-		EndDrawing();
-
-		// Move cursor with arrow keys
-		if (textBoxSelected)
-		{
-			if (IsKeyPressed(KEY_LEFT) && cursorPos > 0) cursorPos--;
-			if (IsKeyPressed(KEY_RIGHT) && cursorPos < 4) cursorPos++;
-		}
-		if (number[3] == '1') {
-			SetExitKey(KEY_ENTER);
-		}
+	cout << "Number 1: " << number1 << endl;
+	cout << "Number 2: " << number2 << endl;
+	cout << "Operation: ";
+	switch (op) {
+	case 0:
+		cout << "AND";
+		result = number1 & number2;
+		break;
+	case 1:
+		cout << "OR";
+		result = number1 | number2;
+		break;
+	case 2:
+		cout << "XOR";
+		result = number1 ^ number2;
+		break;
+	}
+	cout << endl;
+	cin >> user;
+	if (user == result) {
+		SetExitKey(KEY_ENTER);
+		cout << "YOU SOLVED THE OPERATION!" << endl;
+	}
+	else {
+		doorMedium();
 	}
 }
 
@@ -920,7 +844,7 @@ void level2() {
 			}
 		}
 
-		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		Texture2D texture;
 		if (movement.x > 0) {
@@ -940,7 +864,7 @@ void level2() {
 		}
 
 		BeginDrawing();
-		//BeginMode2D(camera);
+		BeginMode2D(camera);
 		ClearBackground(DARKGRAY);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
@@ -957,7 +881,7 @@ void level2() {
 		}
 		DrawRectangleRec(nextLevel, BLANK);
 		DrawTexture(texture, rect.x, rect.y, WHITE);
-		//EndMode2D();
+		EndMode2D();
 		EndDrawing();
 		back();
 	}
@@ -1279,7 +1203,7 @@ void level3() {
 			}
 		}
 
-		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		Texture2D texture;
 		if (movement.x > 0) {
@@ -1299,7 +1223,7 @@ void level3() {
 		}
 
 		BeginDrawing();
-		//BeginMode2D(camera);
+		BeginMode2D(camera);
 		ClearBackground(DARKGRAY);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
@@ -1316,7 +1240,7 @@ void level3() {
 		}
 		DrawRectangleRec(nextLevel, BLANK);
 		DrawTexture(texture, rect.x, rect.y, WHITE);
-		//EndMode2D();
+		EndMode2D();
 		EndDrawing();
 		back();
 	}
@@ -1593,7 +1517,7 @@ void level4() {
 			}
 		}
 
-		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		Texture2D texture;
 		if (movement.x > 0) {
@@ -1613,7 +1537,7 @@ void level4() {
 		}
 
 		BeginDrawing();
-		//BeginMode2D(camera);
+		BeginMode2D(camera);
 		ClearBackground(DARKGREEN);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
@@ -1630,7 +1554,7 @@ void level4() {
 		}
 		DrawRectangleRec(nextLevel, BLANK);
 		DrawTexture(texture, rect.x, rect.y, WHITE);
-		//EndMode2D();
+		EndMode2D();
 		EndDrawing();
 		back();
 	}
@@ -1647,9 +1571,9 @@ void level5() {
 
 	const int numBoxes = 40;
 	Rectangle boxes[numBoxes];
-	Color boxColor = BLANK; 
+	Color boxColor = BLANK;
 	//Color boxColor = RED;
-	
+
 	boxes[0].x = 175;
 	boxes[0].y = 0;
 	boxes[0].width = 7;
@@ -1924,7 +1848,7 @@ void level5() {
 			}
 		}
 
-		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
 		Texture2D texture;
 		if (movement.x > 0) {
@@ -1944,7 +1868,7 @@ void level5() {
 		}
 
 		BeginDrawing();
-		//BeginMode2D(camera);
+		BeginMode2D(camera);
 		ClearBackground(DARKGRAY);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
@@ -1961,7 +1885,7 @@ void level5() {
 		}
 		DrawRectangleRec(nextLevel, BLANK);
 		DrawTexture(texture, rect.x, rect.y, WHITE);
-		//EndMode2D();
+		EndMode2D();
 		EndDrawing();
 		back();
 	}
