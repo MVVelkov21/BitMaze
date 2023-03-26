@@ -6,6 +6,191 @@ using namespace std;
 
 const int screenWidth = 800, screenHeight = 450;
 
+void doorEasy() {
+	char number[5] = { '0' }; // variable to hold number value as a string
+	char text[5] = { '0' }; // variable to hold text input
+	int cursorPos = 0; // cursor position in text input
+
+	Rectangle textBox = { screenWidth / 2 - 100, screenHeight / 2 - 25, 200, 50 };
+	bool textBoxSelected = 1;
+
+	SetTargetFPS(60);
+
+	while (!WindowShouldClose())
+	{
+		// Update
+		if (textBoxSelected)
+		{
+			int key = GetKeyPressed();
+
+			if (key == '0' || key == '1')
+			{
+				if (cursorPos < 4) // only add if there is space in number
+				{
+					number[cursorPos++] = key; // add new digit to number
+				}
+			}
+
+			if (IsKeyPressed(KEY_BACKSPACE) && cursorPos > 0)
+			{
+				number[--cursorPos] = '0'; // remove last digit from number
+			}
+
+			// update text input with number value
+			sprintf_s(text, "%s", number);
+		}
+
+		// Draw
+		BeginDrawing();
+
+		ClearBackground(RAYWHITE);
+
+		DrawRectangleRec(textBox, LIGHTGRAY);
+		DrawText(text, textBox.x + 5, textBox.y + 10, 40, MAROON);
+
+		// Draw cursor rectangle
+		if (textBoxSelected)
+		{
+			DrawRectangle(textBox.x + 5 + cursorPos * 20, textBox.y + 13, 2, 30, MAROON);
+		}
+
+		EndDrawing();
+
+		// Move cursor with arrow keys
+		if (textBoxSelected)
+		{
+			if (IsKeyPressed(KEY_LEFT) && cursorPos > 0) cursorPos--;
+			if (IsKeyPressed(KEY_RIGHT) && cursorPos < 4) cursorPos++;
+		}
+		if (number[3] == '1') {
+			SetExitKey(KEY_ENTER);
+		}
+	}
+}
+
+void doorMedium() {
+	char number[7] = { '0' }; // variable to hold number value as a string
+	char text[7] = { '0' }; // variable to hold text input
+	int cursorPos = 0; // cursor position in text input
+
+	Rectangle textBox = { screenWidth / 2 - 100, screenHeight / 2 - 25, 200, 50 };
+	bool textBoxSelected = 1;
+
+	SetTargetFPS(60);
+
+	while (!WindowShouldClose())
+	{
+		// Update
+		if (textBoxSelected)
+		{
+			int key = GetKeyPressed();
+
+			if (key == '0' || key == '1')
+			{
+				if (cursorPos < 6) // only add if there is space in number
+				{
+					number[cursorPos++] = key; // add new digit to number
+				}
+			}
+
+			if (IsKeyPressed(KEY_BACKSPACE) && cursorPos > 0)
+			{
+				number[--cursorPos] = '0'; // remove last digit from number
+			}
+
+			// update text input with number value
+			sprintf_s(text, "%s", number);
+		}
+
+		// Draw
+		BeginDrawing();
+
+		ClearBackground(RAYWHITE);
+
+		DrawRectangleRec(textBox, LIGHTGRAY);
+		DrawText(text, textBox.x + 5, textBox.y + 10, 40, MAROON);
+
+		// Draw cursor rectangle
+		if (textBoxSelected)
+		{
+			DrawRectangle(textBox.x + 5 + cursorPos * 20, textBox.y + 13, 2, 30, MAROON);
+		}
+
+		EndDrawing();
+
+		// Move cursor with arrow keys
+		if (textBoxSelected)
+		{
+			if (IsKeyPressed(KEY_LEFT) && cursorPos > 0) cursorPos--;
+			if (IsKeyPressed(KEY_RIGHT) && cursorPos < 4) cursorPos++;
+		}
+		if (number[3] == '1') {
+			SetExitKey(KEY_ENTER);
+		}
+	}
+}
+void doorHard() {
+	char number[9] = { '0' }; // variable to hold number value as a string
+	char text[9] = { '0' }; // variable to hold text input
+	int cursorPos = 0; // cursor position in text input
+
+	Rectangle textBox = { screenWidth / 2 - 100, screenHeight / 2 - 25, 200, 50 };
+	bool textBoxSelected = 1;
+
+	SetTargetFPS(60);
+
+	while (!WindowShouldClose())
+	{
+		// Update
+		if (textBoxSelected)
+		{
+			int key = GetKeyPressed();
+
+			if (key == '0' || key == '1')
+			{
+				if (cursorPos < 8) // only add if there is space in number
+				{
+					number[cursorPos++] = key; // add new digit to number
+				}
+			}
+
+			if (IsKeyPressed(KEY_BACKSPACE) && cursorPos > 0)
+			{
+				number[--cursorPos] = '0'; // remove last digit from number
+			}
+
+			// update text input with number value
+			sprintf_s(text, "%s", number);
+		}
+
+		// Draw
+		BeginDrawing();
+
+		ClearBackground(RAYWHITE);
+
+		DrawRectangleRec(textBox, LIGHTGRAY);
+		DrawText(text, textBox.x + 5, textBox.y + 10, 40, MAROON);
+
+		// Draw cursor rectangle
+		if (textBoxSelected)
+		{
+			DrawRectangle(textBox.x + 5 + cursorPos * 20, textBox.y + 13, 2, 30, MAROON);
+		}
+
+		EndDrawing();
+
+		// Move cursor with arrow keys
+		if (textBoxSelected)
+		{
+			if (IsKeyPressed(KEY_LEFT) && cursorPos > 0) cursorPos--;
+			if (IsKeyPressed(KEY_RIGHT) && cursorPos < 4) cursorPos++;
+		}
+		if (number[3] == '1') {
+			SetExitKey(KEY_ENTER);
+		}
+	}
+}
+
 void levelCompletion(int levelNumber) {
 	SetExitKey(KEY_NULL);
 	while (!WindowShouldClose()) {
@@ -56,6 +241,7 @@ void back() {
 }
 
 void level1() {
+	SetExitKey(KEY_NULL);
 	Camera2D camera = { 0 };
 	camera.target = { 0 };
 	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
@@ -219,6 +405,42 @@ void level1() {
 	Rectangle rect = { 195, 15, 15, 15 };
 	Rectangle nextLevel = { 570, 370, 50, 70 };
 
+
+	const int door1count = 1;
+	bool checkDoor1[door1count];
+	for (size_t i = 0; i < door1count; i++){
+		checkDoor1[i] = 0;
+	}
+	Rectangle door1[door1count];
+	door1[0].x = 380;
+	door1[0].y = 122;
+	door1[0].width = 30;
+	door1[0].height = 3;
+
+	const int door2count = 1;
+	bool checkDoor2[door2count];
+	for (size_t i = 0; i < door2count; i++) {
+		checkDoor2[i] = 0;
+	}
+	Rectangle door2[door2count];
+	door2[0].x = 562;
+	door2[0].y = 206;
+	door2[0].width = 3;
+	door2[0].height = 60;
+
+	const int door3count = 1;
+	bool checkDoor3[door3count];
+	for (size_t i = 0; i < door3count; i++) {
+		checkDoor3[i] = 0;
+	}
+	Rectangle door3[door3count];
+	door3[0].x = 200;
+	door3[0].y = 408;
+	door3[0].width = 30;
+	door3[0].height = 3;
+
+
+
 	const float moveSpeed = 200.0f;
 	Vector2 movement = { 0, 0 };
 
@@ -249,6 +471,27 @@ void level1() {
 		if (CheckCollisionRecs(rect, nextLevel)) {
 			levelCompletion(1);
 		}
+		for (int i = 0; i < door1count; i++) {
+			if (CheckCollisionRecs(rect, door1[i]) && !checkDoor1[i]) {
+				checkDoor1[i] = 1;
+				doorEasy();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door2count; i++) {
+			if (CheckCollisionRecs(rect, door2[i]) && !checkDoor2[i]) {
+				checkDoor2[i] = 1;
+				doorMedium();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door3count; i++) {
+			if (CheckCollisionRecs(rect, door3[i]) && !checkDoor3[i]) {
+				checkDoor3[i] = 1;
+				doorHard();
+				SetExitKey(KEY_NULL);
+			}
+		}
 
 		camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
@@ -276,7 +519,16 @@ void level1() {
 		for (int i = 0; i < numBoxes; i++){
 			DrawRectangleRec(boxes[i], boxColor);
 		}
-		DrawRectangleRec(nextLevel, RED);
+		for (int i = 0; i < door1count; i++) {
+			DrawRectangleRec(door1[i], GREEN);
+		}
+		for (int i = 0; i < door2count; i++) {
+			DrawRectangleRec(door2[i], ORANGE);
+		}
+		for (int i = 0; i < door3count; i++) {
+			DrawRectangleRec(door3[i], RED);
+		}
+		DrawRectangleRec(nextLevel, BLANK);
 		DrawTexture(texture, rect.x, rect.y, WHITE);
 		EndMode2D();
 		EndDrawing();
@@ -286,7 +538,11 @@ void level1() {
 	UnloadTexture(map);
 }
 
+
+
+
 void level2() {
+	SetExitKey(KEY_NULL);
 	Camera2D camera = { 0 };
 	camera.target = { 0 };
 	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
@@ -553,9 +809,72 @@ void level2() {
 	Rectangle nextLevel = { 400, 365, 50, 70 };
 	Color rectColor = RED;
 
+
+	const int door1count = 3;
+	bool checkDoor1[door1count];
+	for (size_t i = 0; i < door1count; i++) {
+		checkDoor1[i] = 0;
+	}
+	Rectangle door1[door1count];
+	door1[0].x = 280;
+	door1[0].y = 35;
+	door1[0].width = 20;
+	door1[0].height = 3;
+
+	door1[1].x = 260;
+	door1[1].y = 144;
+	door1[1].width = 20;
+	door1[1].height = 3;
+
+
+
+	const int door2count = 2;
+	bool checkDoor2[door2count];
+	for (size_t i = 0; i < door2count; i++) {
+		checkDoor2[i] = 0;
+	}
+	Rectangle door2[door2count];
+	door2[0].x = 518;
+	door2[0].y = 52;
+	door2[0].width = 20;
+	door2[0].height = 3;
+
+	door2[1].x = 483;
+	door2[1].y = 108;
+	door2[1].width = 50;
+	door2[1].height = 3;
+
+
+
+	const int door3count = 3;
+	bool checkDoor3[door3count];
+	for (size_t i = 0; i < door3count; i++) {
+		checkDoor3[i] = 0;
+	}
+	Rectangle door3[door3count];
+	door3[0].x = 226;
+	door3[0].y = 380;
+	door3[0].width = 3;
+	door3[0].height = 35;
+
+	door3[1].x = 415;
+	door3[1].y = 290;
+	door3[1].width = 3;
+	door3[1].height = 50;
+
+	door3[2].x = 444;
+	door3[2].y = 254;
+	door3[2].width = 3;
+	door3[2].height = 33;
+
+
 	const float moveSpeed = 150.0f;
 	Vector2 movement = { 0, 0 };
 
+	Texture2D textureUp = LoadTexture("resources/joel_b1.png");
+	Texture2D textureDown = LoadTexture("resources/joel_fr1.png");
+	Texture2D textureLeft = LoadTexture("resources/joel_l1.png");
+	Texture2D textureRight = LoadTexture("resources/joel_r1.png");
 	Texture2D map = LoadTexture("resources/level2.png");
 	while (!WindowShouldClose()) {
 		movement.x = ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) - (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))) * moveSpeed * GetFrameTime();
@@ -579,8 +898,46 @@ void level2() {
 		if (CheckCollisionRecs(rect, nextLevel)) {
 			levelCompletion(2);
 		}
+		for (int i = 0; i < door1count; i++) {
+			if (CheckCollisionRecs(rect, door1[i]) && !checkDoor1[i]) {
+				checkDoor1[i] = 1;
+				doorEasy();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door2count; i++) {
+			if (CheckCollisionRecs(rect, door2[i]) && !checkDoor2[i]) {
+				checkDoor2[i] = 1;
+				doorMedium();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door3count; i++) {
+			if (CheckCollisionRecs(rect, door3[i]) && !checkDoor3[i]) {
+				checkDoor3[i] = 1;
+				doorHard();
+				SetExitKey(KEY_NULL);
+			}
+		}
 
 		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+
+		Texture2D texture;
+		if (movement.x > 0) {
+			texture = textureRight;
+		}
+		else if (movement.x < 0) {
+			texture = textureLeft;
+		}
+		else if (movement.y > 0) {
+			texture = textureDown;
+		}
+		else if (movement.y < 0) {
+			texture = textureUp;
+		}
+		else {
+			texture = textureUp;
+		}
 
 		BeginDrawing();
 		//BeginMode2D(camera);
@@ -589,8 +946,17 @@ void level2() {
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
-		DrawRectangleRec(nextLevel, RED);
-		DrawRectangleRec(rect, rectColor);
+		for (int i = 0; i < door1count; i++) {
+			DrawRectangleRec(door1[i], GREEN);
+		}
+		for (int i = 0; i < door2count; i++) {
+			DrawRectangleRec(door2[i], ORANGE);
+		}
+		for (int i = 0; i < door3count; i++) {
+			DrawRectangleRec(door3[i], RED);
+		}
+		DrawRectangleRec(nextLevel, BLANK);
+		DrawTexture(texture, rect.x, rect.y, WHITE);
 		//EndMode2D();
 		EndDrawing();
 		back();
@@ -598,7 +964,12 @@ void level2() {
 	UnloadTexture(map);
 }
 
+
+
+
+
 void level3() {
+	SetExitKey(KEY_NULL);
 	Camera2D camera = { 0 };
 	camera.target = { 0 };
 	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
@@ -803,9 +1174,66 @@ void level3() {
 	Rectangle nextLevel = { 580, 10, 40, 30 };
 	Color rectColor = RED;
 
+
+	const int door1count = 2;
+	bool checkDoor1[door1count];
+	for (size_t i = 0; i < door1count; i++) {
+		checkDoor1[i] = 0;
+	}
+	Rectangle door1[door1count];
+	door1[0].x = 186;
+	door1[0].y = 70;
+	door1[0].width = 28;
+	door1[0].height = 3;
+
+	door1[1].x = 268;
+	door1[1].y = 110;
+	door1[1].width = 3;
+	door1[1].height = 28;
+
+
+
+	const int door2count = 2;
+	bool checkDoor2[door2count];
+	for (size_t i = 0; i < door2count; i++) {
+		checkDoor2[i] = 0;
+	}
+	Rectangle door2[door2count];
+	door2[0].x = 365;
+	door2[0].y = 48;
+	door2[0].width = 60;
+	door2[0].height = 3;
+
+	door2[1].x = 590;
+	door2[1].y = 180;
+	door2[1].width = 24;
+	door2[1].height = 3;
+
+
+
+	const int door3count = 2;
+	bool checkDoor3[door3count];
+	for (size_t i = 0; i < door3count; i++) {
+		checkDoor3[i] = 0;
+	}
+	Rectangle door3[door3count];
+	door3[0].x = 336;
+	door3[0].y = 280;
+	door3[0].width = 24;
+	door3[0].height = 3;
+
+	door3[1].x = 525;
+	door3[1].y = 220;
+	door3[1].width = 3;
+	door3[1].height = 29;
+
 	const float moveSpeed = 200.0f;
 	Vector2 movement = { 0, 0 };
 
+	Texture2D textureUp = LoadTexture("resources/joel_b1.png");
+	Texture2D textureDown = LoadTexture("resources/joel_fr1.png");
+	Texture2D textureLeft = LoadTexture("resources/joel_l1.png");
+	Texture2D textureRight = LoadTexture("resources/joel_r1.png");
 	Texture2D map = LoadTexture("resources/level3.png");
 	while (!WindowShouldClose()) {
 		movement.x = ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) - (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))) * moveSpeed * GetFrameTime();
@@ -829,8 +1257,46 @@ void level3() {
 		if (CheckCollisionRecs(rect, nextLevel)) {
 			levelCompletion(3);
 		}
+		for (int i = 0; i < door1count; i++) {
+			if (CheckCollisionRecs(rect, door1[i]) && !checkDoor1[i]) {
+				checkDoor1[i] = 1;
+				doorEasy();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door2count; i++) {
+			if (CheckCollisionRecs(rect, door2[i]) && !checkDoor2[i]) {
+				checkDoor2[i] = 1;
+				doorMedium();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door3count; i++) {
+			if (CheckCollisionRecs(rect, door3[i]) && !checkDoor3[i]) {
+				checkDoor3[i] = 1;
+				doorHard();
+				SetExitKey(KEY_NULL);
+			}
+		}
 
 		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+
+		Texture2D texture;
+		if (movement.x > 0) {
+			texture = textureRight;
+		}
+		else if (movement.x < 0) {
+			texture = textureLeft;
+		}
+		else if (movement.y > 0) {
+			texture = textureDown;
+		}
+		else if (movement.y < 0) {
+			texture = textureUp;
+		}
+		else {
+			texture = textureUp;
+		}
 
 		BeginDrawing();
 		//BeginMode2D(camera);
@@ -839,8 +1305,17 @@ void level3() {
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
-		DrawRectangleRec(nextLevel, RED);
-		DrawRectangleRec(rect, rectColor);
+		for (int i = 0; i < door1count; i++) {
+			DrawRectangleRec(door1[i], GREEN);
+		}
+		for (int i = 0; i < door2count; i++) {
+			DrawRectangleRec(door2[i], ORANGE);
+		}
+		for (int i = 0; i < door3count; i++) {
+			DrawRectangleRec(door3[i], RED);
+		}
+		DrawRectangleRec(nextLevel, BLANK);
+		DrawTexture(texture, rect.x, rect.y, WHITE);
 		//EndMode2D();
 		EndDrawing();
 		back();
@@ -848,7 +1323,11 @@ void level3() {
 	UnloadTexture(map);
 }
 
+
+
+
 void level4() {
+	SetExitKey(KEY_NULL);
 	Camera2D camera = { 0 };
 	camera.target = { 0 };
 	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
@@ -1004,9 +1483,71 @@ void level4() {
 	Rectangle nextLevel = { 570, 15, 50, 30 };
 	Color rectColor = RED;
 
+
+	const int door1count = 3;
+	bool checkDoor1[door1count];
+	for (size_t i = 0; i < door1count; i++) {
+		checkDoor1[i] = 0;
+	}
+	Rectangle door1[door1count];
+	door1[0].x = 240;
+	door1[0].y = 18;
+	door1[0].width = 3;
+	door1[0].height = 28;
+
+	door1[1].x = 493;
+	door1[1].y = 110;
+	door1[1].width = 3;
+	door1[1].height = 28;
+
+	door1[2].x = 194;
+	door1[2].y = 344;
+	door1[2].width = 30;
+	door1[2].height = 3;
+
+
+
+	const int door2count = 2;
+	bool checkDoor2[door2count];
+	for (size_t i = 0; i < door2count; i++) {
+		checkDoor2[i] = 0;
+	}
+	Rectangle door2[door2count];
+	door2[0].x = 350;
+	door2[0].y = 154;
+	door2[0].width = 3;
+	door2[0].height = 25;
+
+	door2[1].x = 530;
+	door2[1].y = 190;
+	door2[1].width = 28;
+	door2[1].height = 3;
+
+
+
+	const int door3count = 2;
+	bool checkDoor3[door3count];
+	for (size_t i = 0; i < door3count; i++) {
+		checkDoor3[i] = 0;
+	}
+	Rectangle door3[door3count];
+	door3[0].x = 574;
+	door3[0].y = 400;
+	door3[0].width = 28;
+	door3[0].height = 3;
+
+	door3[1].x = 285;
+	door3[1].y = 344;
+	door3[1].width = 3;
+	door3[1].height = 29;
+
 	const float moveSpeed = 150.0f;
 	Vector2 movement = { 0, 0 };
 
+	Texture2D textureUp = LoadTexture("resources/joel_b1.png");
+	Texture2D textureDown = LoadTexture("resources/joel_fr1.png");
+	Texture2D textureLeft = LoadTexture("resources/joel_l1.png");
+	Texture2D textureRight = LoadTexture("resources/joel_r1.png");
 	Texture2D map = LoadTexture("resources/level4.png");
 	while (!WindowShouldClose()) {
 		movement.x = ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) - (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))) * moveSpeed * GetFrameTime();
@@ -1030,18 +1571,65 @@ void level4() {
 		if (CheckCollisionRecs(rect, nextLevel)) {
 			levelCompletion(4);
 		}
+		for (int i = 0; i < door1count; i++) {
+			if (CheckCollisionRecs(rect, door1[i]) && !checkDoor1[i]) {
+				checkDoor1[i] = 1;
+				doorEasy();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door2count; i++) {
+			if (CheckCollisionRecs(rect, door2[i]) && !checkDoor2[i]) {
+				checkDoor2[i] = 1;
+				doorMedium();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door3count; i++) {
+			if (CheckCollisionRecs(rect, door3[i]) && !checkDoor3[i]) {
+				checkDoor3[i] = 1;
+				doorHard();
+				SetExitKey(KEY_NULL);
+			}
+		}
 
 		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
 
+		Texture2D texture;
+		if (movement.x > 0) {
+			texture = textureRight;
+		}
+		else if (movement.x < 0) {
+			texture = textureLeft;
+		}
+		else if (movement.y > 0) {
+			texture = textureDown;
+		}
+		else if (movement.y < 0) {
+			texture = textureUp;
+		}
+		else {
+			texture = textureUp;
+		}
+
 		BeginDrawing();
 		//BeginMode2D(camera);
-		ClearBackground(DARKGRAY);
+		ClearBackground(DARKGREEN);
 		DrawTexture(map, 400 - 225, 0, WHITE);
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
-		DrawRectangleRec(nextLevel, RED);
-		DrawRectangleRec(rect, rectColor);
+		for (int i = 0; i < door1count; i++) {
+			DrawRectangleRec(door1[i], GREEN);
+		}
+		for (int i = 0; i < door2count; i++) {
+			DrawRectangleRec(door2[i], ORANGE);
+		}
+		for (int i = 0; i < door3count; i++) {
+			DrawRectangleRec(door3[i], RED);
+		}
+		DrawRectangleRec(nextLevel, BLANK);
+		DrawTexture(texture, rect.x, rect.y, WHITE);
 		//EndMode2D();
 		EndDrawing();
 		back();
@@ -1050,6 +1638,7 @@ void level4() {
 }
 
 void level5() {
+	SetExitKey(KEY_NULL);
 	Camera2D camera = { 0 };
 	camera.target = { 0 };
 	camera.offset = { screenWidth / 2.0f, screenHeight / 2.0f };
@@ -1225,9 +1814,71 @@ void level5() {
 	Rectangle nextLevel = { 180, 335, 50, 70 };
 	Color rectColor = RED;
 
+
+	const int door1count = 3;
+	bool checkDoor1[door1count];
+	for (size_t i = 0; i < door1count; i++) {
+		checkDoor1[i] = 0;
+	}
+	Rectangle door1[door1count];
+	door1[0].x = 299;
+	door1[0].y = 67;
+	door1[0].width = 3;
+	door1[0].height = 20;
+
+	door1[1].x = 485;
+	door1[1].y = 48;
+	door1[1].width = 39;
+	door1[1].height = 3;
+
+	door1[2].x = 325;
+	door1[2].y = 328;
+	door1[2].width = 26;
+	door1[2].height = 3;
+
+
+
+	const int door2count = 2;
+	bool checkDoor2[door2count];
+	for (size_t i = 0; i < door2count; i++) {
+		checkDoor2[i] = 0;
+	}
+	Rectangle door2[door2count];
+	door2[0].x = 467;
+	door2[0].y = 124;
+	door2[0].width = 3;
+	door2[0].height = 30;
+
+	door2[1].x = 469;
+	door2[1].y = 364;
+	door2[1].width = 3;
+	door2[1].height = 26;
+
+
+
+	const int door3count = 2;
+	bool checkDoor3[door3count];
+	for (size_t i = 0; i < door3count; i++) {
+		checkDoor3[i] = 0;
+	}
+	Rectangle door3[door3count];
+	door3[0].x = 582;
+	door3[0].y = 253;
+	door3[0].width = 26;
+	door3[0].height = 3;
+
+	door3[1].x = 313;
+	door3[1].y = 355;
+	door3[1].width = 3;
+	door3[1].height = 36;
+
 	const float moveSpeed = 150.0f;
 	Vector2 movement = { 0, 0 };
 
+	Texture2D textureUp = LoadTexture("resources/joel_b1.png");
+	Texture2D textureDown = LoadTexture("resources/joel_fr1.png");
+	Texture2D textureLeft = LoadTexture("resources/joel_l1.png");
+	Texture2D textureRight = LoadTexture("resources/joel_r1.png");
 	Texture2D map = LoadTexture("resources/level5.png");
 	while (!WindowShouldClose()) {
 		movement.x = ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) - (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))) * moveSpeed * GetFrameTime();
@@ -1251,8 +1902,46 @@ void level5() {
 		if (CheckCollisionRecs(rect, nextLevel)) {
 			levelCompletion(5);
 		}
+		for (int i = 0; i < door1count; i++) {
+			if (CheckCollisionRecs(rect, door1[i]) && !checkDoor1[i]) {
+				checkDoor1[i] = 1;
+				doorEasy();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door2count; i++) {
+			if (CheckCollisionRecs(rect, door2[i]) && !checkDoor2[i]) {
+				checkDoor2[i] = 1;
+				doorMedium();
+				SetExitKey(KEY_NULL);
+			}
+		}
+		for (int i = 0; i < door3count; i++) {
+			if (CheckCollisionRecs(rect, door3[i]) && !checkDoor3[i]) {
+				checkDoor3[i] = 1;
+				doorHard();
+				SetExitKey(KEY_NULL);
+			}
+		}
 
 		//camera.target = { rect.x + rect.width / 2.0f, rect.y + rect.height / 2.0f };
+
+		Texture2D texture;
+		if (movement.x > 0) {
+			texture = textureRight;
+		}
+		else if (movement.x < 0) {
+			texture = textureLeft;
+		}
+		else if (movement.y > 0) {
+			texture = textureDown;
+		}
+		else if (movement.y < 0) {
+			texture = textureUp;
+		}
+		else {
+			texture = textureUp;
+		}
 
 		BeginDrawing();
 		//BeginMode2D(camera);
@@ -1261,8 +1950,17 @@ void level5() {
 		for (int i = 0; i < numBoxes; i++) {
 			DrawRectangleRec(boxes[i], boxColor);
 		}
-		DrawRectangleRec(nextLevel, RED);
-		DrawRectangleRec(rect, rectColor);
+		for (int i = 0; i < door1count; i++) {
+			DrawRectangleRec(door1[i], GREEN);
+		}
+		for (int i = 0; i < door2count; i++) {
+			DrawRectangleRec(door2[i], ORANGE);
+		}
+		for (int i = 0; i < door3count; i++) {
+			DrawRectangleRec(door3[i], RED);
+		}
+		DrawRectangleRec(nextLevel, BLANK);
+		DrawTexture(texture, rect.x, rect.y, WHITE);
 		//EndMode2D();
 		EndDrawing();
 		back();
